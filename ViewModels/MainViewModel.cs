@@ -25,6 +25,7 @@ public sealed class MainViewModel : INotifyPropertyChanged
     ];
 
     private readonly LauncherCatalogService _catalogService = new();
+    private readonly SystemTelemetryService _telemetryService = new();
     private readonly ObservableCollection<LauncherItem> _catalog = [];
     private CancellationTokenSource? _refreshCancellationSource;
     private string _searchText = string.Empty;
@@ -37,6 +38,13 @@ public sealed class MainViewModel : INotifyPropertyChanged
     private string _currentFullDateText = string.Empty;
     private LauncherSettings _settings = new();
     private readonly DispatcherTimer _clockTimer;
+    private readonly DispatcherTimer _telemetryTimer;
+    private double _cpuUsage;
+    private double _ramUsage;
+    private double _diskUsage;
+    private string _ramSummary = "Reading memory...";
+    private string _diskSummary = "Reading system drive...";
+    private string _systemUptimeText = "UP 00:00";
     private static readonly HttpClient RadioClient = new()
     {
         BaseAddress = new Uri("https://de1.api.radio-browser.info/"),
@@ -70,7 +78,15 @@ public sealed class MainViewModel : INotifyPropertyChanged
         };
         _clockTimer.Tick += (_, _) => UpdateClock();
         _clockTimer.Start();
+
+        _telemetryTimer = new DispatcherTimer
+        {
+            Interval = TimeSpan.FromSeconds(1)
+        };
+        _telemetryTimer.Tick += (_, _) => UpdateTelemetry();
+        _telemetryTimer.Start();
         UpdateClock();
+        UpdateTelemetry();
     }
 
     public string SearchText
@@ -150,6 +166,13 @@ public sealed class MainViewModel : INotifyPropertyChanged
         get => _currentFullDateText;
         private set => SetProperty(ref _currentFullDateText, value);
     }
+
+    public double CpuUsage { get => _cpuUsage; private set => SetProperty(ref _cpuUsage, value); }
+    public double RamUsage { get => _ramUsage; private set => SetProperty(ref _ramUsage, value); }
+    public double DiskUsage { get => _diskUsage; private set => SetProperty(ref _diskUsage, value); }
+    public string RamSummary { get => _ramSummary; private set => SetProperty(ref _ramSummary, value); }
+    public string DiskSummary { get => _diskSummary; private set => SetProperty(ref _diskSummary, value); }
+    public string SystemUptimeText { get => _systemUptimeText; private set => SetProperty(ref _systemUptimeText, value); }
 
     public async Task InitializeAsync()
     {
@@ -552,5 +575,16 @@ public sealed class MainViewModel : INotifyPropertyChanged
         CurrentTimeText = DateTime.Now.ToString("HH:mm:ss", System.Globalization.CultureInfo.InvariantCulture);
         CurrentDateText = DateTime.Now.ToString("dd/MM/yyyy", System.Globalization.CultureInfo.InvariantCulture);
         CurrentFullDateText = string.Empty;
+    }
+
+    private void UpdateTelemetry()
+    {
+        var snapshot = _telemetryService.Read();
+        CpuUsage = snapshot.CpuUsage;
+        RamUsage = snapshot.RamUsage;
+        DiskUsage = snapshot.DiskUsage;
+        RamSummary = snapshot.RamSummary;
+        DiskSummary = snapshot.DiskSummary;
+        SystemUptimeText = snapshot.UptimeText;
     }
 }
