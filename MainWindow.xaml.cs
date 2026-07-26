@@ -183,7 +183,7 @@ public partial class MainWindow : Window
         }
 
         CircuitWallpaper.Source = new BitmapImage(new Uri(
-            "pack://application:,,,/DesktopOrbit;component/Assets/circuit-wallpaper-v1.png",
+            "pack://application:,,,/Assets/circuit-wallpaper-v1.png",
             UriKind.Absolute));
     }
 

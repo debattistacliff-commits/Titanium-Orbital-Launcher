@@ -19,7 +19,7 @@
         <MediaElement x:Name="RadioPlayer" LoadedBehavior="Manual" UnloadedBehavior="Stop" Volume="0.72" Visibility="Collapsed" />
 
         <Image x:Name="CircuitWallpaper"
-               Source="pack://application:,,,/DesktopOrbit;component/Assets/circuit-wallpaper-v1.png"
+               Source="pack://application:,,,/Assets/circuit-wallpaper-v1.png"
                Stretch="UniformToFill"
                Opacity="0.43"
                IsHitTestVisible="False"
