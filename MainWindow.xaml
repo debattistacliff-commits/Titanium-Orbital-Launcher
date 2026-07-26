@@ -18,6 +18,18 @@
         </Grid.Background>
         <MediaElement x:Name="RadioPlayer" LoadedBehavior="Manual" UnloadedBehavior="Stop" Volume="0.72" Visibility="Collapsed" />
 
+        <MediaElement x:Name="VideoWallpaper"
+                      LoadedBehavior="Manual"
+                      UnloadedBehavior="Stop"
+                      Stretch="UniformToFill"
+                      IsMuted="True"
+                      Volume="0"
+                      Opacity="0.43"
+                      Visibility="Collapsed"
+                      IsHitTestVisible="False"
+                      MediaEnded="VideoWallpaper_MediaEnded"
+                      MediaFailed="VideoWallpaper_MediaFailed" />
+
         <Image x:Name="CircuitWallpaper"
                Source="pack://application:,,,/Assets/circuit-wallpaper-v1.png"
                Stretch="UniformToFill"

@@ -2,7 +2,7 @@
 
 ![Titanium Orbital Launcher](docs/images/titanium-orbital-dashboard.png)
 
-Titanium Orbital Launcher is a Windows desktop command center built around a physical, rotating orbital interface. It combines application and folder launching, indexed search, worldwide internet radio, a 24-hour clock, animated wallpaper support, and an optional desktop-organizing library.
+Titanium Orbital Launcher is a Windows desktop command center built around a physical, rotating orbital interface. It combines application and folder launching, indexed search, worldwide internet radio, a 24-hour clock, looping video and static-image wallpapers, and an optional desktop-organizing library.
 
 The visual language is inspired by precision equipment: brushed titanium rings, knurled 3D controls, recessed black surfaces, cyan-anodized active states, and restrained amber status lighting.
 
@@ -15,7 +15,7 @@ The visual language is inspired by precision equipment: brushed titanium rings, 
 - Live radio playback and animated synthesizer-style level monitor
 - Search across Start Menu shortcuts, desktop entries, fixed drives, and common document/media types
 - Add App and Add Folder controls for personalizing the orbit
-- Custom JPG, PNG, BMP, GIF, or WebP backgrounds with subtle motion
+- Real looping MP4, WMV, and AVI video wallpapers, plus static PNG, JPG, BMP, and WebP backgrounds
 - Titanium, stainless-steel, knurled, cyan-anodized, and amber 3D control treatments
 - Optional desktop organization into Shortcuts, Folders, and Files libraries
 
@@ -46,7 +46,7 @@ For manual build, portable publishing, and removal instructions, see [Installati
 2. Drag around the orbital ring to rotate it. The item facing the hub becomes active.
 3. Click an app/folder node to open it, or click a radio node to tune the station.
 4. Use **Add App** and **Add Folder** to add favorites.
-5. Use **Background** to choose your own image or animated GIF/WebP.
+5. Use **Background** to choose your own image or looping video.
 6. Search the indexed catalog from the right-hand directory panel.
 
 The full guide explains orbit paging, search, radio, backgrounds, storage paths, and desktop organization: [Usage guide](docs/USAGE.md).
@@ -73,7 +73,7 @@ If you deliberately select **Organize Desktop**, the launcher creates:
 
 ## Themes and backgrounds
 
-The bundled theme uses a deep-black foundation, brushed metal, knurled cylindrical controls, cyan active lighting, and amber radio accents. Background images are composited behind a dark readability layer and animated with a slow cinematic drift.
+The bundled theme uses a deep-black foundation, brushed metal, knurled cylindrical controls, cyan active lighting, and amber radio accents. Static images receive a slow cinematic drift; video wallpapers play their actual frames in a muted loop behind the readability layer.
 
 See [Theming and backgrounds](docs/THEMING.md) for recommended image dimensions, formats, composition, and contrast.
 

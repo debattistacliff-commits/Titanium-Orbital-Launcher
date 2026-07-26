@@ -23,7 +23,7 @@ For best results, use:
 - Limited fine detail behind text and the right-side panels
 - Cyan and amber highlights that complement the interface
 
-Supported chooser formats are JPG, JPEG, PNG, BMP, GIF, and WebP. WPF codec support can vary by Windows installation, especially for animated WebP.
+Supported video formats are MP4, WMV, and AVI. Supported static-image formats are JPG, JPEG, PNG, BMP, and WebP. Actual codec availability depends on Windows Media Foundation; H.264 MP4 is the most portable choice. Animated GIF and animated WebP playback are not currently implemented.
 
 ## Applying a background
 
@@ -33,7 +33,7 @@ Supported chooser formats are JPG, JPEG, PNG, BMP, GIF, and WebP. WPF codec supp
 4. Confirm that labels and radio controls remain readable.
 5. Select **Default** at any time to restore the bundled circuit wallpaper.
 
-The launcher applies a slow scale-and-drift movement to create a living-wallpaper effect while retaining a dark overlay for legibility.
+Video wallpapers play their real frames, muted and looped. Static images receive a slow scale-and-drift movement. Both remain behind a dark overlay for interface legibility.
 
 ## Suggested visual recipe
 

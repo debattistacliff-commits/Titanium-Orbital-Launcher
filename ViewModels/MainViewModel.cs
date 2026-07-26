@@ -210,7 +210,7 @@ public sealed class MainViewModel : INotifyPropertyChanged
         _settings.CustomBackgroundPath = path;
         OnPropertyChanged(nameof(CustomBackgroundPath));
         await _catalogService.SaveSettingsAsync(_settings);
-        StatusText = string.IsNullOrWhiteSpace(path) ? "Built-in circuit wallpaper restored" : "Custom animated wallpaper applied";
+        StatusText = string.IsNullOrWhiteSpace(path) ? "Built-in circuit wallpaper restored" : "Custom wallpaper applied";
     }
 
     public async Task SetRadioRegionAsync(string region)

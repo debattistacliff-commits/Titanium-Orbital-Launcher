@@ -46,7 +46,7 @@ The orbital hub shows local Windows time as `HH:mm:ss`, with values from `00:00:
 
 ## Custom backgrounds
 
-Select **Background**, then choose a JPG, JPEG, PNG, BMP, GIF, or WebP image. The selected path is remembered across launches. Select **Default** to restore the bundled animated circuit-board wallpaper.
+Select **Background**, then choose an MP4, WMV, or AVI video, or a JPG, JPEG, PNG, BMP, or WebP image. Videos play muted in a continuous loop; static images receive the existing slow pan-and-zoom treatment. The selected path is remembered across launches. Select **Default** to restore the bundled static circuit-board wallpaper with subtle motion effects.
 
 If a custom file is moved or deleted, restore the default or select it again from its new location.
 
