@@ -14,6 +14,9 @@ if (-not (Get-Command dotnet -ErrorAction SilentlyContinue)) {
 
 $selfContainedValue = if ($SelfContained) { 'true' } else { 'false' }
 dotnet publish $projectFile -c Release -r win-x64 --self-contained $selfContainedValue -o $publishDirectory
+if ($LASTEXITCODE -ne 0) {
+    throw "dotnet publish failed with exit code $LASTEXITCODE. Close Titanium Orbital Launcher if its installed files are in use, then run the installer again."
+}
 
 $executable = Join-Path $publishDirectory 'TitaniumOrbitalLauncher.exe'
 if (-not (Test-Path -LiteralPath $executable)) {

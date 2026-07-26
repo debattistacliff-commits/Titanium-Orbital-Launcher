@@ -7,6 +7,8 @@ using System.Media;
 using System.IO;
 using System.Windows.Threading;
 using System.Windows.Media.Imaging;
+using MediaColor = System.Windows.Media.Color;
+using MediaSolidColorBrush = System.Windows.Media.SolidColorBrush;
 using DesktopOrbit.Models;
 using DesktopOrbit.ViewModels;
 using Forms = System.Windows.Forms;
@@ -15,6 +17,11 @@ namespace DesktopOrbit;
 
 public partial class MainWindow : Window
 {
+    private static readonly HashSet<string> VideoWallpaperExtensions = new(StringComparer.OrdinalIgnoreCase)
+    {
+        ".mp4", ".wmv", ".avi"
+    };
+
     private const int HotkeyId = 0x1200;
     private const uint ModControl = 0x0002;
     private const uint ModAlt = 0x0001;
@@ -137,8 +144,8 @@ public partial class MainWindow : Window
     {
         var dialog = new Microsoft.Win32.OpenFileDialog
         {
-            Title = "Choose an animated launcher wallpaper",
-            Filter = "Image files|*.png;*.jpg;*.jpeg;*.webp;*.bmp|All files|*.*",
+            Title = "Choose a launcher image or video wallpaper",
+            Filter = "Wallpaper files|*.mp4;*.wmv;*.avi;*.png;*.jpg;*.jpeg;*.webp;*.bmp|Video files|*.mp4;*.wmv;*.avi|Image files|*.png;*.jpg;*.jpeg;*.webp;*.bmp|All files|*.*",
             CheckFileExists = true
         };
 
@@ -170,21 +177,62 @@ public partial class MainWindow : Window
 
     private void ApplyWallpaper(string? path)
     {
+        StopVideoWallpaper();
+
         if (!string.IsNullOrWhiteSpace(path) && File.Exists(path))
         {
+            if (VideoWallpaperExtensions.Contains(Path.GetExtension(path)))
+            {
+                CircuitWallpaper.Visibility = Visibility.Collapsed;
+                WallpaperShade.Fill = new MediaSolidColorBrush(MediaColor.FromArgb(0x76, 0x06, 0x09, 0x0B));
+                VideoWallpaper.Source = new Uri(path, UriKind.Absolute);
+                VideoWallpaper.Visibility = Visibility.Visible;
+                VideoWallpaper.Position = TimeSpan.Zero;
+                VideoWallpaper.Play();
+                return;
+            }
+
             var bitmap = new BitmapImage();
             bitmap.BeginInit();
             bitmap.CacheOption = BitmapCacheOption.OnLoad;
             bitmap.UriSource = new Uri(path, UriKind.Absolute);
             bitmap.EndInit();
             bitmap.Freeze();
+            WallpaperShade.Fill = new MediaSolidColorBrush(MediaColor.FromArgb(0xB5, 0x06, 0x09, 0x0B));
+            CircuitWallpaper.Visibility = Visibility.Visible;
             CircuitWallpaper.Source = bitmap;
             return;
         }
 
+        WallpaperShade.Fill = new MediaSolidColorBrush(MediaColor.FromArgb(0xB5, 0x06, 0x09, 0x0B));
+        CircuitWallpaper.Visibility = Visibility.Visible;
         CircuitWallpaper.Source = new BitmapImage(new Uri(
-            "pack://application:,,,/DesktopOrbit;component/Assets/circuit-wallpaper-v1.png",
+            "pack://application:,,,/Assets/circuit-wallpaper-v1.png",
             UriKind.Absolute));
+    }
+
+    private void StopVideoWallpaper()
+    {
+        VideoWallpaper.Stop();
+        VideoWallpaper.Source = null;
+        VideoWallpaper.Visibility = Visibility.Collapsed;
+    }
+
+    private void VideoWallpaper_MediaEnded(object sender, RoutedEventArgs e)
+    {
+        VideoWallpaper.Position = TimeSpan.Zero;
+        VideoWallpaper.Play();
+    }
+
+    private void VideoWallpaper_MediaFailed(object sender, ExceptionRoutedEventArgs e)
+    {
+        StopVideoWallpaper();
+        WallpaperShade.Fill = new MediaSolidColorBrush(MediaColor.FromArgb(0xB5, 0x06, 0x09, 0x0B));
+        CircuitWallpaper.Visibility = Visibility.Visible;
+        CircuitWallpaper.Source = new BitmapImage(new Uri(
+            "pack://application:,,,/Assets/circuit-wallpaper-v1.png",
+            UriKind.Absolute));
+        ViewModel.SetRadioStatus($"Video wallpaper could not play: {e.ErrorException?.Message ?? "unsupported media"}");
     }
 
     private async void OrganizeDesktop_Click(object sender, RoutedEventArgs e) => await ViewModel.OrganizeDesktopAsync();
