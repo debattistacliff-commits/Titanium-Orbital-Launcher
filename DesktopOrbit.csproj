@@ -1,0 +1,22 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net10.0-windows</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <UseWPF>true</UseWPF>
+    <UseWindowsForms>true</UseWindowsForms>
+    <ApplicationIcon>Assets\titanium-orbital-shortcut-v1.ico</ApplicationIcon>
+    <AssemblyName>TitaniumOrbitalLauncher</AssemblyName>
+    <Product>Titanium Orbital Launcher</Product>
+    <Authors>debattistacliff-commits</Authors>
+    <Description>A titanium-inspired orbital desktop launcher with world radio, search, and customizable animated backgrounds.</Description>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Resource Include="Assets\circuit-wallpaper-v1.png" />
+    <Resource Include="Assets\titanium-orbital-shortcut-v1.png" />
+  </ItemGroup>
+
+</Project>
