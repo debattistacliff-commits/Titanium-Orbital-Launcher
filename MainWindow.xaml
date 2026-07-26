@@ -11,6 +11,7 @@
         MinWidth="1000"
         MinHeight="780"
         Background="#FF030405"
+        Icon="pack://application:,,,/Assets/titanium-orbital-shortcut-v1.ico"
         WindowStartupLocation="CenterScreen">
     <Grid>
         <Grid.Background>
@@ -207,6 +208,56 @@
                                 <TextBlock Text="RADIO LIVE" FontSize="10" FontWeight="Black" Foreground="#FF61E8EF" />
                                 <TextBlock x:Name="RadioMonitorStation" FontSize="9" Foreground="#FFB4BDC1" TextTrimming="CharacterEllipsis" />
                             </StackPanel>
+                        </Grid>
+                    </Border>
+
+                    <Border HorizontalAlignment="Left"
+                            Width="250"
+                            Padding="12,9"
+                            CornerRadius="12"
+                            Background="#DD080B0D"
+                            BorderBrush="#8055DDE7"
+                            BorderThickness="1">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                            </Grid.RowDefinitions>
+                            <DockPanel>
+                                <TextBlock Text="LIVE SYSTEM" FontSize="10" FontWeight="Black" Foreground="#FF64E6EE" />
+                                <TextBlock DockPanel.Dock="Right" Text="{Binding SystemUptimeText}" FontSize="9" Foreground="#FF95A0A5" />
+                            </DockPanel>
+                            <Grid Grid.Row="1" Margin="0,7,0,0">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="*" />
+                                </Grid.ColumnDefinitions>
+
+                                <StackPanel Margin="0,0,8,0">
+                                    <DockPanel>
+                                        <TextBlock Text="CPU" FontSize="9" FontWeight="Bold" Foreground="#FFE1E5E7" />
+                                        <TextBlock DockPanel.Dock="Right" Text="{Binding CpuUsage, StringFormat={}{0:F0}%}" FontSize="9" Foreground="#FF64E6EE" />
+                                    </DockPanel>
+                                    <ProgressBar Margin="0,4,0,0" Height="5" Maximum="100" Value="{Binding CpuUsage, Mode=OneWay}" Foreground="#FF54E2EB" Background="#FF252B2E" BorderThickness="0" />
+                                </StackPanel>
+
+                                <StackPanel Grid.Column="1" Margin="0,0,8,0">
+                                    <DockPanel>
+                                        <TextBlock Text="RAM" FontSize="9" FontWeight="Bold" Foreground="#FFE1E5E7" />
+                                        <TextBlock DockPanel.Dock="Right" Text="{Binding RamUsage, StringFormat={}{0:F0}%}" FontSize="9" Foreground="#FFB98AFF" />
+                                    </DockPanel>
+                                    <ProgressBar Margin="0,4,0,0" Height="5" Maximum="100" Value="{Binding RamUsage, Mode=OneWay}" Foreground="#FFB98AFF" Background="#FF252B2E" BorderThickness="0" ToolTip="{Binding RamSummary}" />
+                                </StackPanel>
+
+                                <StackPanel Grid.Column="2">
+                                    <DockPanel>
+                                        <TextBlock Text="DISK" FontSize="9" FontWeight="Bold" Foreground="#FFE1E5E7" />
+                                        <TextBlock DockPanel.Dock="Right" Text="{Binding DiskUsage, StringFormat={}{0:F0}%}" FontSize="9" Foreground="#FFFFA33A" />
+                                    </DockPanel>
+                                    <ProgressBar Margin="0,4,0,0" Height="5" Maximum="100" Value="{Binding DiskUsage, Mode=OneWay}" Foreground="#FFFFA33A" Background="#FF252B2E" BorderThickness="0" ToolTip="{Binding DiskSummary}" />
+                                </StackPanel>
+                            </Grid>
                         </Grid>
                     </Border>
                 </Grid>

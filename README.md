@@ -1,6 +1,6 @@
 # Titanium Orbital Launcher
 
-![Titanium Orbital Launcher](docs/images/titanium-orbital-dashboard.png)
+![Titanium Orbital Launcher with live CPU, RAM, and disk telemetry](docs/images/titanium-orbital-live-system.png)
 
 Titanium Orbital Launcher is a Windows desktop command center built around a physical, rotating orbital interface. It combines application and folder launching, indexed search, worldwide internet radio, a 24-hour clock, looping video and static-image wallpapers, and an optional desktop-organizing library.
 
@@ -16,6 +16,7 @@ The visual language is inspired by precision equipment: brushed titanium rings, 
 - Search across Start Menu shortcuts, desktop entries, fixed drives, and common document/media types
 - Add App and Add Folder controls for personalizing the orbit
 - Real looping MP4, WMV, and AVI video wallpapers, plus static PNG, JPG, BMP, and WebP backgrounds
+- Live Windows telemetry for CPU load, physical RAM, system-drive usage, and uptime
 - Titanium, stainless-steel, knurled, cyan-anodized, and amber 3D control treatments
 - Optional desktop organization into Shortcuts, Folders, and Files libraries
 

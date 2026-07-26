@@ -16,6 +16,7 @@
 
   <ItemGroup>
     <Resource Include="Assets\circuit-wallpaper-v1.png" />
+    <Resource Include="Assets\titanium-orbital-shortcut-v1.ico" />
     <Resource Include="Assets\titanium-orbital-shortcut-v1.png" />
   </ItemGroup>
 

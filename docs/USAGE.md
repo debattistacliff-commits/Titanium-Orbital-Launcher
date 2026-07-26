@@ -44,6 +44,17 @@ Internet radio is live third-party content. A listing does not guarantee that a 
 
 The orbital hub shows local Windows time as `HH:mm:ss`, with values from `00:00:00` through `23:59:59`. The date uses `dd/MM/yyyy`.
 
+## Live system telemetry
+
+The compact **LIVE SYSTEM** panel reads actual Windows counters once per second:
+
+- CPU load comes from Windows kernel idle, kernel, and user time deltas.
+- RAM shows used physical memory as a percentage; hover for used and total GB.
+- Disk shows used space on the Windows system drive; hover for used and total GB.
+- Uptime comes from the Windows monotonic system timer.
+
+The values are measurements from the current computer, not demonstration placeholders. CPU may initially display 0% until the second sample establishes a time delta.
+
 ## Custom backgrounds
 
 Select **Background**, then choose an MP4, WMV, or AVI video, or a JPG, JPEG, PNG, BMP, or WebP image. Videos play muted in a continuous loop; static images receive the existing slow pan-and-zoom treatment. The selected path is remembered across launches. Select **Default** to restore the bundled static circuit-board wallpaper with subtle motion effects.
