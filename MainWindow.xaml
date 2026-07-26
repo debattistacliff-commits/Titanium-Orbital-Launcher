@@ -24,7 +24,7 @@
                       Stretch="UniformToFill"
                       IsMuted="True"
                       Volume="0"
-                      Opacity="0.43"
+                      Opacity="0.82"
                       Visibility="Collapsed"
                       IsHitTestVisible="False"
                       MediaEnded="VideoWallpaper_MediaEnded"
@@ -55,7 +55,7 @@
                 </EventTrigger>
             </Image.Triggers>
         </Image>
-        <Rectangle Fill="#B506090B" IsHitTestVisible="False" />
+        <Rectangle x:Name="WallpaperShade" Fill="#B506090B" IsHitTestVisible="False" />
         <Ellipse Width="520" Height="520" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,-120,-120,0" Fill="#22FF7A00" IsHitTestVisible="False">
             <Ellipse.Effect><BlurEffect Radius="90" /></Ellipse.Effect>
             <Ellipse.Triggers>
