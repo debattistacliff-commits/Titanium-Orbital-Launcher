@@ -108,6 +108,8 @@ DesktopOrbit/
 
 This repository is a design-forward working prototype and portfolio showcase. Test it with copies of non-critical files before relying on Desktop Organizer in a production workflow.
 
+Planned refinements are tracked in the [project roadmap](docs/ROADMAP.md).
+
 ## Creator
 
 Created and maintained by [@debattistacliff-commits](https://github.com/debattistacliff-commits).
